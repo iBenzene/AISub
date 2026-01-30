@@ -1,5 +1,7 @@
 <template>
-  <div class="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+  <div
+    class="relative flex min-h-screen items-center justify-center overflow-hidden p-4"
+  >
     <!-- Background -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-gray-50 via-primary-50/30 to-gray-100 dark:from-dark-950 dark:via-dark-900 dark:to-dark-950"
@@ -30,9 +32,15 @@
       <div class="mb-8 text-center">
         <!-- Custom Logo or Default Logo -->
         <div
-          class="mb-4 inline-flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl shadow-lg shadow-primary-500/30"
+          class="mb-4 inline-flex h-16 w-16 items-center justify-center overflow-hidden"
         >
-          <img :src="siteLogo || '/logo.png'" alt="Logo" class="h-full w-full object-contain" />
+          <img
+            :src="
+              siteLogo || 'https://cdn.ibenzene.cn/default/iBzAISub_logo.svg'
+            "
+            alt="Logo"
+            class="h-full w-full object-contain"
+          />
         </div>
         <h1 class="text-gradient mb-2 text-3xl font-bold">
           {{ siteName }}
@@ -61,26 +69,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { getPublicSettings } from '@/api/auth'
-import { sanitizeUrl } from '@/utils/url'
+import { ref, computed, onMounted } from "vue";
+import { getPublicSettings } from "@/api/auth";
+import { sanitizeUrl } from "@/utils/url";
 
-const siteName = ref('Sub2API')
-const siteLogo = ref('')
-const siteSubtitle = ref('Subscription to API Conversion Platform')
+const siteName = ref("埃苯泽のエーアイ订阅");
+const siteLogo = ref("");
+const siteSubtitle = ref("Subscription to API Conversion Platform");
 
-const currentYear = computed(() => new Date().getFullYear())
+const currentYear = computed(() => new Date().getFullYear());
 
 onMounted(async () => {
   try {
-    const settings = await getPublicSettings()
-    siteName.value = settings.site_name || 'Sub2API'
-    siteLogo.value = sanitizeUrl(settings.site_logo || '', { allowRelative: true })
-    siteSubtitle.value = settings.site_subtitle || 'Subscription to API Conversion Platform'
+    const settings = await getPublicSettings();
+    siteName.value = settings.site_name || "埃苯泽のエーアイ订阅";
+    siteLogo.value = sanitizeUrl(settings.site_logo || "", {
+      allowRelative: true,
+    });
+    siteSubtitle.value =
+      settings.site_subtitle || "Subscription to API Conversion Platform";
   } catch (error) {
-    console.error('Failed to load public settings:', error)
+    console.error("Failed to load public settings:", error);
   }
-})
+});
 </script>
 
 <style scoped>

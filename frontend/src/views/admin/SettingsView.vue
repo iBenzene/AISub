@@ -3,7 +3,9 @@
     <div class="mx-auto max-w-4xl space-y-6">
       <!-- Loading State -->
       <div v-if="loading" class="flex items-center justify-center py-12">
-        <div class="h-8 w-8 animate-spin rounded-full border-b-2 border-primary-600"></div>
+        <div
+          class="h-8 w-8 animate-spin rounded-full border-b-2 border-primary-600"
+        ></div>
       </div>
 
       <!-- Settings Form -->
@@ -12,10 +14,10 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.adminApiKey.title') }}
+              {{ t("admin.settings.adminApiKey.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.adminApiKey.description') }}
+              {{ t("admin.settings.adminApiKey.description") }}
             </p>
           </div>
           <div class="space-y-4 p-6">
@@ -30,21 +32,29 @@
                   class="mt-0.5 flex-shrink-0 text-amber-500"
                 />
                 <p class="ml-3 text-sm text-amber-700 dark:text-amber-300">
-                  {{ t('admin.settings.adminApiKey.securityWarning') }}
+                  {{ t("admin.settings.adminApiKey.securityWarning") }}
                 </p>
               </div>
             </div>
 
             <!-- Loading State -->
-            <div v-if="adminApiKeyLoading" class="flex items-center gap-2 text-gray-500">
-              <div class="h-4 w-4 animate-spin rounded-full border-b-2 border-primary-600"></div>
-              {{ t('common.loading') }}
+            <div
+              v-if="adminApiKeyLoading"
+              class="flex items-center gap-2 text-gray-500"
+            >
+              <div
+                class="h-4 w-4 animate-spin rounded-full border-b-2 border-primary-600"
+              ></div>
+              {{ t("common.loading") }}
             </div>
 
             <!-- No Key Configured -->
-            <div v-else-if="!adminApiKeyExists" class="flex items-center justify-between">
+            <div
+              v-else-if="!adminApiKeyExists"
+              class="flex items-center justify-between"
+            >
               <span class="text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.adminApiKey.notConfigured') }}
+                {{ t("admin.settings.adminApiKey.notConfigured") }}
               </span>
               <button
                 type="button"
@@ -74,8 +84,8 @@
                 </svg>
                 {{
                   adminApiKeyOperating
-                    ? t('admin.settings.adminApiKey.creating')
-                    : t('admin.settings.adminApiKey.create')
+                    ? t("admin.settings.adminApiKey.creating")
+                    : t("admin.settings.adminApiKey.create")
                 }}
               </button>
             </div>
@@ -84,8 +94,10 @@
             <div v-else class="space-y-4">
               <div class="flex items-center justify-between">
                 <div>
-                  <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.adminApiKey.currentKey') }}
+                  <label
+                    class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.adminApiKey.currentKey") }}
                   </label>
                   <code
                     class="rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-900 dark:bg-dark-700 dark:text-gray-100"
@@ -102,8 +114,8 @@
                   >
                     {{
                       adminApiKeyOperating
-                        ? t('admin.settings.adminApiKey.regenerating')
-                        : t('admin.settings.adminApiKey.regenerate')
+                        ? t("admin.settings.adminApiKey.regenerating")
+                        : t("admin.settings.adminApiKey.regenerate")
                     }}
                   </button>
                   <button
@@ -112,7 +124,7 @@
                     :disabled="adminApiKeyOperating"
                     class="btn btn-secondary btn-sm text-red-600 hover:text-red-700 dark:text-red-400"
                   >
-                    {{ t('admin.settings.adminApiKey.delete') }}
+                    {{ t("admin.settings.adminApiKey.delete") }}
                   </button>
                 </div>
               </div>
@@ -122,8 +134,10 @@
                 v-if="newAdminApiKey"
                 class="space-y-3 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20"
               >
-                <p class="text-sm font-medium text-green-700 dark:text-green-300">
-                  {{ t('admin.settings.adminApiKey.keyWarning') }}
+                <p
+                  class="text-sm font-medium text-green-700 dark:text-green-300"
+                >
+                  {{ t("admin.settings.adminApiKey.keyWarning") }}
                 </p>
                 <div class="flex items-center gap-2">
                   <code
@@ -136,11 +150,11 @@
                     @click="copyNewKey"
                     class="btn btn-primary btn-sm flex-shrink-0"
                   >
-                    {{ t('admin.settings.adminApiKey.copyKey') }}
+                    {{ t("admin.settings.adminApiKey.copyKey") }}
                   </button>
                 </div>
                 <p class="text-xs text-green-600 dark:text-green-400">
-                  {{ t('admin.settings.adminApiKey.usage') }}
+                  {{ t("admin.settings.adminApiKey.usage") }}
                 </p>
               </div>
             </div>
@@ -151,17 +165,22 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.streamTimeout.title') }}
+              {{ t("admin.settings.streamTimeout.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.streamTimeout.description') }}
+              {{ t("admin.settings.streamTimeout.description") }}
             </p>
           </div>
           <div class="space-y-5 p-6">
             <!-- Loading State -->
-            <div v-if="streamTimeoutLoading" class="flex items-center gap-2 text-gray-500">
-              <div class="h-4 w-4 animate-spin rounded-full border-b-2 border-primary-600"></div>
-              {{ t('common.loading') }}
+            <div
+              v-if="streamTimeoutLoading"
+              class="flex items-center gap-2 text-gray-500"
+            >
+              <div
+                class="h-4 w-4 animate-spin rounded-full border-b-2 border-primary-600"
+              ></div>
+              {{ t("common.loading") }}
             </div>
 
             <template v-else>
@@ -169,10 +188,10 @@
               <div class="flex items-center justify-between">
                 <div>
                   <label class="font-medium text-gray-900 dark:text-white">{{
-                    t('admin.settings.streamTimeout.enabled')
+                    t("admin.settings.streamTimeout.enabled")
                   }}</label>
                   <p class="text-sm text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.streamTimeout.enabledHint') }}
+                    {{ t("admin.settings.streamTimeout.enabledHint") }}
                   </p>
                 </div>
                 <Toggle v-model="streamTimeoutForm.enabled" />
@@ -185,23 +204,33 @@
               >
                 <!-- Action -->
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.streamTimeout.action') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.streamTimeout.action") }}
                   </label>
                   <select v-model="streamTimeoutForm.action" class="input w-64">
-                    <option value="temp_unsched">{{ t('admin.settings.streamTimeout.actionTempUnsched') }}</option>
-                    <option value="error">{{ t('admin.settings.streamTimeout.actionError') }}</option>
-                    <option value="none">{{ t('admin.settings.streamTimeout.actionNone') }}</option>
+                    <option value="temp_unsched">
+                      {{ t("admin.settings.streamTimeout.actionTempUnsched") }}
+                    </option>
+                    <option value="error">
+                      {{ t("admin.settings.streamTimeout.actionError") }}
+                    </option>
+                    <option value="none">
+                      {{ t("admin.settings.streamTimeout.actionNone") }}
+                    </option>
                   </select>
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.streamTimeout.actionHint') }}
+                    {{ t("admin.settings.streamTimeout.actionHint") }}
                   </p>
                 </div>
 
                 <!-- Temp Unsched Minutes (only show when action is temp_unsched) -->
                 <div v-if="streamTimeoutForm.action === 'temp_unsched'">
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.streamTimeout.tempUnschedMinutes') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.streamTimeout.tempUnschedMinutes") }}
                   </label>
                   <input
                     v-model.number="streamTimeoutForm.temp_unsched_minutes"
@@ -211,14 +240,18 @@
                     class="input w-32"
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.streamTimeout.tempUnschedMinutesHint') }}
+                    {{
+                      t("admin.settings.streamTimeout.tempUnschedMinutesHint")
+                    }}
                   </p>
                 </div>
 
                 <!-- Threshold Count -->
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.streamTimeout.thresholdCount') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.streamTimeout.thresholdCount") }}
                   </label>
                   <input
                     v-model.number="streamTimeoutForm.threshold_count"
@@ -228,14 +261,18 @@
                     class="input w-32"
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.streamTimeout.thresholdCountHint') }}
+                    {{ t("admin.settings.streamTimeout.thresholdCountHint") }}
                   </p>
                 </div>
 
                 <!-- Threshold Window Minutes -->
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.streamTimeout.thresholdWindowMinutes') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{
+                      t("admin.settings.streamTimeout.thresholdWindowMinutes")
+                    }}
                   </label>
                   <input
                     v-model.number="streamTimeoutForm.threshold_window_minutes"
@@ -245,13 +282,19 @@
                     class="input w-32"
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.streamTimeout.thresholdWindowMinutesHint') }}
+                    {{
+                      t(
+                        "admin.settings.streamTimeout.thresholdWindowMinutesHint",
+                      )
+                    }}
                   </p>
                 </div>
               </div>
 
               <!-- Save Button -->
-              <div class="flex justify-end border-t border-gray-100 pt-4 dark:border-dark-700">
+              <div
+                class="flex justify-end border-t border-gray-100 pt-4 dark:border-dark-700"
+              >
                 <button
                   type="button"
                   @click="saveStreamTimeoutSettings"
@@ -278,7 +321,9 @@
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  {{ streamTimeoutSaving ? t('common.saving') : t('common.save') }}
+                  {{
+                    streamTimeoutSaving ? t("common.saving") : t("common.save")
+                  }}
                 </button>
               </div>
             </template>
@@ -289,10 +334,10 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.registration.title') }}
+              {{ t("admin.settings.registration.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.registration.description') }}
+              {{ t("admin.settings.registration.description") }}
             </p>
           </div>
           <div class="space-y-5 p-6">
@@ -300,10 +345,10 @@
             <div class="flex items-center justify-between">
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.registration.enableRegistration')
+                  t("admin.settings.registration.enableRegistration")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.registration.enableRegistrationHint') }}
+                  {{ t("admin.settings.registration.enableRegistrationHint") }}
                 </p>
               </div>
               <Toggle v-model="form.registration_enabled" />
@@ -315,10 +360,10 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.registration.emailVerification')
+                  t("admin.settings.registration.emailVerification")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.registration.emailVerificationHint') }}
+                  {{ t("admin.settings.registration.emailVerificationHint") }}
                 </p>
               </div>
               <Toggle v-model="form.email_verify_enabled" />
@@ -330,10 +375,10 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.registration.promoCode')
+                  t("admin.settings.registration.promoCode")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.registration.promoCodeHint') }}
+                  {{ t("admin.settings.registration.promoCodeHint") }}
                 </p>
               </div>
               <Toggle v-model="form.promo_code_enabled" />
@@ -346,10 +391,10 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.registration.passwordReset')
+                  t("admin.settings.registration.passwordReset")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.registration.passwordResetHint') }}
+                  {{ t("admin.settings.registration.passwordResetHint") }}
                 </p>
               </div>
               <Toggle v-model="form.password_reset_enabled" />
@@ -361,17 +406,17 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.registration.totp')
+                  t("admin.settings.registration.totp")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.registration.totpHint') }}
+                  {{ t("admin.settings.registration.totpHint") }}
                 </p>
                 <!-- Warning when encryption key not configured -->
                 <p
                   v-if="!form.totp_encryption_key_configured"
                   class="mt-2 text-sm text-amber-600 dark:text-amber-400"
                 >
-                  {{ t('admin.settings.registration.totpKeyNotConfigured') }}
+                  {{ t("admin.settings.registration.totpKeyNotConfigured") }}
                 </p>
               </div>
               <Toggle
@@ -386,10 +431,10 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.turnstile.title') }}
+              {{ t("admin.settings.turnstile.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.turnstile.description') }}
+              {{ t("admin.settings.turnstile.description") }}
             </p>
           </div>
           <div class="space-y-5 p-6">
@@ -397,10 +442,10 @@
             <div class="flex items-center justify-between">
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.turnstile.enableTurnstile')
+                  t("admin.settings.turnstile.enableTurnstile")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.turnstile.enableTurnstileHint') }}
+                  {{ t("admin.settings.turnstile.enableTurnstileHint") }}
                 </p>
               </div>
               <Toggle v-model="form.turnstile_enabled" />
@@ -413,8 +458,10 @@
             >
               <div class="grid grid-cols-1 gap-6">
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.turnstile.siteKey') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.turnstile.siteKey") }}
                   </label>
                   <input
                     v-model="form.turnstile_site_key"
@@ -423,18 +470,22 @@
                     placeholder="0x4AAAAAAA..."
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.turnstile.siteKeyHint') }}
+                    {{ t("admin.settings.turnstile.siteKeyHint") }}
                     <a
                       href="https://dash.cloudflare.com/"
                       target="_blank"
                       class="text-primary-600 hover:text-primary-500"
-                      >{{ t('admin.settings.turnstile.cloudflareDashboard') }}</a
+                      >{{
+                        t("admin.settings.turnstile.cloudflareDashboard")
+                      }}</a
                     >
                   </p>
                 </div>
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.turnstile.secretKey') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.turnstile.secretKey") }}
                   </label>
                   <input
                     v-model="form.turnstile_secret_key"
@@ -445,8 +496,8 @@
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
                     {{
                       form.turnstile_secret_key_configured
-                        ? t('admin.settings.turnstile.secretKeyConfiguredHint')
-                        : t('admin.settings.turnstile.secretKeyHint')
+                        ? t("admin.settings.turnstile.secretKeyConfiguredHint")
+                        : t("admin.settings.turnstile.secretKeyHint")
                     }}
                   </p>
                 </div>
@@ -459,20 +510,20 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.linuxdo.title') }}
+              {{ t("admin.settings.linuxdo.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.linuxdo.description') }}
+              {{ t("admin.settings.linuxdo.description") }}
             </p>
           </div>
           <div class="space-y-5 p-6">
             <div class="flex items-center justify-between">
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.linuxdo.enable')
+                  t("admin.settings.linuxdo.enable")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.linuxdo.enableHint') }}
+                  {{ t("admin.settings.linuxdo.enableHint") }}
                 </p>
               </div>
               <Toggle v-model="form.linuxdo_connect_enabled" />
@@ -484,23 +535,29 @@
             >
               <div class="grid grid-cols-1 gap-6">
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.linuxdo.clientId') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.linuxdo.clientId") }}
                   </label>
                   <input
                     v-model="form.linuxdo_connect_client_id"
                     type="text"
                     class="input font-mono text-sm"
-                    :placeholder="t('admin.settings.linuxdo.clientIdPlaceholder')"
+                    :placeholder="
+                      t('admin.settings.linuxdo.clientIdPlaceholder')
+                    "
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.linuxdo.clientIdHint') }}
+                    {{ t("admin.settings.linuxdo.clientIdHint") }}
                   </p>
                 </div>
 
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.linuxdo.clientSecret') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.linuxdo.clientSecret") }}
                   </label>
                   <input
                     v-model="form.linuxdo_connect_client_secret"
@@ -508,36 +565,44 @@
                     class="input font-mono text-sm"
                     :placeholder="
                       form.linuxdo_connect_client_secret_configured
-                        ? t('admin.settings.linuxdo.clientSecretConfiguredPlaceholder')
+                        ? t(
+                            'admin.settings.linuxdo.clientSecretConfiguredPlaceholder',
+                          )
                         : t('admin.settings.linuxdo.clientSecretPlaceholder')
                     "
                   />
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
                     {{
                       form.linuxdo_connect_client_secret_configured
-                        ? t('admin.settings.linuxdo.clientSecretConfiguredHint')
-                        : t('admin.settings.linuxdo.clientSecretHint')
+                        ? t("admin.settings.linuxdo.clientSecretConfiguredHint")
+                        : t("admin.settings.linuxdo.clientSecretHint")
                     }}
                   </p>
                 </div>
 
                 <div>
-                  <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {{ t('admin.settings.linuxdo.redirectUrl') }}
+                  <label
+                    class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {{ t("admin.settings.linuxdo.redirectUrl") }}
                   </label>
                   <input
                     v-model="form.linuxdo_connect_redirect_url"
                     type="url"
                     class="input font-mono text-sm"
-                    :placeholder="t('admin.settings.linuxdo.redirectUrlPlaceholder')"
+                    :placeholder="
+                      t('admin.settings.linuxdo.redirectUrlPlaceholder')
+                    "
                   />
-                  <div class="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+                  <div
+                    class="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3"
+                  >
                     <button
                       type="button"
                       class="btn btn-secondary btn-sm w-fit"
                       @click="setAndCopyLinuxdoRedirectUrl"
                     >
-                      {{ t('admin.settings.linuxdo.quickSetCopy') }}
+                      {{ t("admin.settings.linuxdo.quickSetCopy") }}
                     </button>
                     <code
                       v-if="linuxdoRedirectUrlSuggestion"
@@ -547,7 +612,7 @@
                     </code>
                   </div>
                   <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.linuxdo.redirectUrlHint') }}
+                    {{ t("admin.settings.linuxdo.redirectUrlHint") }}
                   </p>
                 </div>
               </div>
@@ -559,17 +624,19 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.defaults.title') }}
+              {{ t("admin.settings.defaults.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.defaults.description') }}
+              {{ t("admin.settings.defaults.description") }}
             </p>
           </div>
           <div class="p-6">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.defaults.defaultBalance') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.defaults.defaultBalance") }}
                 </label>
                 <input
                   v-model.number="form.default_balance"
@@ -580,12 +647,14 @@
                   placeholder="0.00"
                 />
                 <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.defaults.defaultBalanceHint') }}
+                  {{ t("admin.settings.defaults.defaultBalanceHint") }}
                 </p>
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.defaults.defaultConcurrency') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.defaults.defaultConcurrency") }}
                 </label>
                 <input
                   v-model.number="form.default_concurrency"
@@ -595,7 +664,7 @@
                   placeholder="1"
                 />
                 <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.defaults.defaultConcurrencyHint') }}
+                  {{ t("admin.settings.defaults.defaultConcurrencyHint") }}
                 </p>
               </div>
             </div>
@@ -606,17 +675,19 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.site.title') }}
+              {{ t("admin.settings.site.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.site.description') }}
+              {{ t("admin.settings.site.description") }}
             </p>
           </div>
           <div class="space-y-6 p-6">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.site.siteName') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.site.siteName") }}
                 </label>
                 <input
                   v-model="form.site_name"
@@ -625,29 +696,35 @@
                   :placeholder="t('admin.settings.site.siteNamePlaceholder')"
                 />
                 <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.site.siteNameHint') }}
+                  {{ t("admin.settings.site.siteNameHint") }}
                 </p>
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.site.siteSubtitle') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.site.siteSubtitle") }}
                 </label>
                 <input
                   v-model="form.site_subtitle"
                   type="text"
                   class="input"
-                  :placeholder="t('admin.settings.site.siteSubtitlePlaceholder')"
+                  :placeholder="
+                    t('admin.settings.site.siteSubtitlePlaceholder')
+                  "
                 />
                 <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.site.siteSubtitleHint') }}
+                  {{ t("admin.settings.site.siteSubtitleHint") }}
                 </p>
               </div>
             </div>
 
             <!-- API Base URL -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.site.apiBaseUrl') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.site.apiBaseUrl") }}
               </label>
               <input
                 v-model="form.api_base_url"
@@ -656,14 +733,16 @@
                 :placeholder="t('admin.settings.site.apiBaseUrlPlaceholder')"
               />
               <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.site.apiBaseUrlHint') }}
+                {{ t("admin.settings.site.apiBaseUrlHint") }}
               </p>
             </div>
 
             <!-- Contact Info -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.site.contactInfo') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.site.contactInfo") }}
               </label>
               <input
                 v-model="form.contact_info"
@@ -672,14 +751,16 @@
                 :placeholder="t('admin.settings.site.contactInfoPlaceholder')"
               />
               <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.site.contactInfoHint') }}
+                {{ t("admin.settings.site.contactInfoHint") }}
               </p>
             </div>
 
             <!-- Doc URL -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.site.docUrl') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.site.docUrl") }}
               </label>
               <input
                 v-model="form.doc_url"
@@ -688,21 +769,22 @@
                 :placeholder="t('admin.settings.site.docUrlPlaceholder')"
               />
               <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.site.docUrlHint') }}
+                {{ t("admin.settings.site.docUrlHint") }}
               </p>
             </div>
 
             <!-- Site Logo Upload -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.site.siteLogo') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.site.siteLogo") }}
               </label>
               <div class="flex items-start gap-6">
                 <!-- Logo Preview -->
                 <div class="flex-shrink-0">
                   <div
-                    class="flex h-20 w-20 items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 dark:border-dark-600 dark:bg-dark-800"
-                    :class="{ 'border-solid': form.site_logo }"
+                    class="flex h-20 w-20 items-center justify-center overflow-hidden"
                   >
                     <img
                       v-if="form.site_logo"
@@ -736,8 +818,13 @@
                         class="hidden"
                         @change="handleLogoUpload"
                       />
-                      <Icon name="upload" size="sm" class="mr-1.5" :stroke-width="2" />
-                      {{ t('admin.settings.site.uploadImage') }}
+                      <Icon
+                        name="upload"
+                        size="sm"
+                        class="mr-1.5"
+                        :stroke-width="2"
+                      />
+                      {{ t("admin.settings.site.uploadImage") }}
                     </label>
                     <button
                       v-if="form.site_logo"
@@ -745,22 +832,31 @@
                       @click="form.site_logo = ''"
                       class="btn btn-secondary btn-sm text-red-600 hover:text-red-700 dark:text-red-400"
                     >
-                      <Icon name="trash" size="sm" class="mr-1.5" :stroke-width="2" />
-                      {{ t('admin.settings.site.remove') }}
+                      <Icon
+                        name="trash"
+                        size="sm"
+                        class="mr-1.5"
+                        :stroke-width="2"
+                      />
+                      {{ t("admin.settings.site.remove") }}
                     </button>
                   </div>
                   <p class="text-xs text-gray-500 dark:text-gray-400">
-                    {{ t('admin.settings.site.logoHint') }}
+                    {{ t("admin.settings.site.logoHint") }}
                   </p>
-                  <p v-if="logoError" class="text-xs text-red-500">{{ logoError }}</p>
+                  <p v-if="logoError" class="text-xs text-red-500">
+                    {{ logoError }}
+                  </p>
                 </div>
               </div>
             </div>
 
             <!-- Home Content -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.site.homeContent') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.site.homeContent") }}
               </label>
               <textarea
                 v-model="form.home_content"
@@ -769,11 +865,11 @@
                 :placeholder="t('admin.settings.site.homeContentPlaceholder')"
               ></textarea>
               <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.site.homeContentHint') }}
+                {{ t("admin.settings.site.homeContentHint") }}
               </p>
               <!-- iframe CSP Warning -->
               <p class="mt-2 text-xs text-amber-600 dark:text-amber-400">
-                {{ t('admin.settings.site.homeContentIframeWarning') }}
+                {{ t("admin.settings.site.homeContentIframeWarning") }}
               </p>
             </div>
 
@@ -783,10 +879,10 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.site.hideCcsImportButton')
+                  t("admin.settings.site.hideCcsImportButton")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.site.hideCcsImportButtonHint') }}
+                  {{ t("admin.settings.site.hideCcsImportButtonHint") }}
                 </p>
               </div>
               <Toggle v-model="form.hide_ccs_import_button" />
@@ -801,10 +897,10 @@
           >
             <div>
               <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-                {{ t('admin.settings.smtp.title') }}
+                {{ t("admin.settings.smtp.title") }}
               </h2>
               <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.smtp.description') }}
+                {{ t("admin.settings.smtp.description") }}
               </p>
             </div>
             <button
@@ -813,7 +909,12 @@
               :disabled="testingSmtp"
               class="btn btn-secondary btn-sm"
             >
-              <svg v-if="testingSmtp" class="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <svg
+                v-if="testingSmtp"
+                class="h-4 w-4 animate-spin"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
                 <circle
                   class="opacity-25"
                   cx="12"
@@ -830,16 +931,18 @@
               </svg>
               {{
                 testingSmtp
-                  ? t('admin.settings.smtp.testing')
-                  : t('admin.settings.smtp.testConnection')
+                  ? t("admin.settings.smtp.testing")
+                  : t("admin.settings.smtp.testConnection")
               }}
             </button>
           </div>
           <div class="space-y-6 p-6">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.host') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.host") }}
                 </label>
                 <input
                   v-model="form.smtp_host"
@@ -849,8 +952,10 @@
                 />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.port') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.port") }}
                 </label>
                 <input
                   v-model.number="form.smtp_port"
@@ -862,8 +967,10 @@
                 />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.username') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.username") }}
                 </label>
                 <input
                   v-model="form.smtp_username"
@@ -873,8 +980,10 @@
                 />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.password') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.password") }}
                 </label>
                 <input
                   v-model="form.smtp_password"
@@ -889,14 +998,16 @@
                 <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
                   {{
                     form.smtp_password_configured
-                      ? t('admin.settings.smtp.passwordConfiguredHint')
-                      : t('admin.settings.smtp.passwordHint')
+                      ? t("admin.settings.smtp.passwordConfiguredHint")
+                      : t("admin.settings.smtp.passwordHint")
                   }}
                 </p>
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.fromEmail') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.fromEmail") }}
                 </label>
                 <input
                   v-model="form.smtp_from_email"
@@ -906,8 +1017,10 @@
                 />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.smtp.fromName') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.smtp.fromName") }}
                 </label>
                 <input
                   v-model="form.smtp_from_name"
@@ -924,10 +1037,10 @@
             >
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.smtp.useTls')
+                  t("admin.settings.smtp.useTls")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.smtp.useTlsHint') }}
+                  {{ t("admin.settings.smtp.useTlsHint") }}
                 </p>
               </div>
               <Toggle v-model="form.smtp_use_tls" />
@@ -939,10 +1052,10 @@
         <div class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.purchase.title') }}
+              {{ t("admin.settings.purchase.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.purchase.description') }}
+              {{ t("admin.settings.purchase.description") }}
             </p>
           </div>
           <div class="space-y-6 p-6">
@@ -950,10 +1063,10 @@
             <div class="flex items-center justify-between">
               <div>
                 <label class="font-medium text-gray-900 dark:text-white">{{
-                  t('admin.settings.purchase.enabled')
+                  t("admin.settings.purchase.enabled")
                 }}</label>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ t('admin.settings.purchase.enabledHint') }}
+                  {{ t("admin.settings.purchase.enabledHint") }}
                 </p>
               </div>
               <Toggle v-model="form.purchase_subscription_enabled" />
@@ -961,8 +1074,10 @@
 
             <!-- URL -->
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {{ t('admin.settings.purchase.url') }}
+              <label
+                class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ t("admin.settings.purchase.url") }}
               </label>
               <input
                 v-model="form.purchase_subscription_url"
@@ -971,10 +1086,10 @@
                 :placeholder="t('admin.settings.purchase.urlPlaceholder')"
               />
               <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                {{ t('admin.settings.purchase.urlHint') }}
+                {{ t("admin.settings.purchase.urlHint") }}
               </p>
               <p class="mt-2 text-xs text-amber-600 dark:text-amber-400">
-                {{ t('admin.settings.purchase.iframeWarning') }}
+                {{ t("admin.settings.purchase.iframeWarning") }}
               </p>
             </div>
           </div>
@@ -984,23 +1099,27 @@
         <div v-if="form.email_verify_enabled" class="card">
           <div class="border-b border-gray-100 px-6 py-4 dark:border-dark-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('admin.settings.testEmail.title') }}
+              {{ t("admin.settings.testEmail.title") }}
             </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {{ t('admin.settings.testEmail.description') }}
+              {{ t("admin.settings.testEmail.description") }}
             </p>
           </div>
           <div class="p-6">
             <div class="flex items-end gap-4">
               <div class="flex-1">
-                <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {{ t('admin.settings.testEmail.recipientEmail') }}
+                <label
+                  class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  {{ t("admin.settings.testEmail.recipientEmail") }}
                 </label>
                 <input
                   v-model="testEmailAddress"
                   type="email"
                   class="input"
-                  :placeholder="t('admin.settings.testEmail.recipientEmailPlaceholder')"
+                  :placeholder="
+                    t('admin.settings.testEmail.recipientEmailPlaceholder')
+                  "
                 />
               </div>
               <button
@@ -1031,8 +1150,8 @@
                 </svg>
                 {{
                   sendingTestEmail
-                    ? t('admin.settings.testEmail.sending')
-                    : t('admin.settings.testEmail.sendTestEmail')
+                    ? t("admin.settings.testEmail.sending")
+                    : t("admin.settings.testEmail.sendTestEmail")
                 }}
               </button>
             </div>
@@ -1042,7 +1161,12 @@
         <!-- Save Button -->
         <div class="flex justify-end">
           <button type="submit" :disabled="saving" class="btn btn-primary">
-            <svg v-if="saving" class="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <svg
+              v-if="saving"
+              class="h-4 w-4 animate-spin"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
               <circle
                 class="opacity-25"
                 cx="12"
@@ -1057,7 +1181,11 @@
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            {{ saving ? t('admin.settings.saving') : t('admin.settings.saveSettings') }}
+            {{
+              saving
+                ? t("admin.settings.saving")
+                : t("admin.settings.saveSettings")
+            }}
           </button>
         </div>
       </form>
@@ -1066,50 +1194,53 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { adminAPI } from '@/api'
-import type { SystemSettings, UpdateSettingsRequest } from '@/api/admin/settings'
-import AppLayout from '@/components/layout/AppLayout.vue'
-import Icon from '@/components/icons/Icon.vue'
-import Toggle from '@/components/common/Toggle.vue'
-import { useClipboard } from '@/composables/useClipboard'
-import { useAppStore } from '@/stores'
+import { ref, reactive, computed, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
+import { adminAPI } from "@/api";
+import type {
+  SystemSettings,
+  UpdateSettingsRequest,
+} from "@/api/admin/settings";
+import AppLayout from "@/components/layout/AppLayout.vue";
+import Icon from "@/components/icons/Icon.vue";
+import Toggle from "@/components/common/Toggle.vue";
+import { useClipboard } from "@/composables/useClipboard";
+import { useAppStore } from "@/stores";
 
-const { t } = useI18n()
-const appStore = useAppStore()
-const { copyToClipboard } = useClipboard()
+const { t } = useI18n();
+const appStore = useAppStore();
+const { copyToClipboard } = useClipboard();
 
-const loading = ref(true)
-const saving = ref(false)
-const testingSmtp = ref(false)
-const sendingTestEmail = ref(false)
-const testEmailAddress = ref('')
-const logoError = ref('')
+const loading = ref(true);
+const saving = ref(false);
+const testingSmtp = ref(false);
+const sendingTestEmail = ref(false);
+const testEmailAddress = ref("");
+const logoError = ref("");
 
 // Admin API Key 状态
-const adminApiKeyLoading = ref(true)
-const adminApiKeyExists = ref(false)
-const adminApiKeyMasked = ref('')
-const adminApiKeyOperating = ref(false)
-const newAdminApiKey = ref('')
+const adminApiKeyLoading = ref(true);
+const adminApiKeyExists = ref(false);
+const adminApiKeyMasked = ref("");
+const adminApiKeyOperating = ref(false);
+const newAdminApiKey = ref("");
 
 // Stream Timeout 状态
-const streamTimeoutLoading = ref(true)
-const streamTimeoutSaving = ref(false)
+const streamTimeoutLoading = ref(true);
+const streamTimeoutSaving = ref(false);
 const streamTimeoutForm = reactive({
   enabled: true,
-  action: 'temp_unsched' as 'temp_unsched' | 'error' | 'none',
+  action: "temp_unsched" as "temp_unsched" | "error" | "none",
   temp_unsched_minutes: 5,
   threshold_count: 3,
-  threshold_window_minutes: 10
-})
+  threshold_window_minutes: 10,
+});
 
 type SettingsForm = SystemSettings & {
-  smtp_password: string
-  turnstile_secret_key: string
-  linuxdo_connect_client_secret: string
-}
+  smtp_password: string;
+  turnstile_secret_key: string;
+  linuxdo_connect_client_secret: string;
+};
 
 const form = reactive<SettingsForm>({
   registration_enabled: true,
@@ -1120,124 +1251,130 @@ const form = reactive<SettingsForm>({
   totp_encryption_key_configured: false,
   default_balance: 0,
   default_concurrency: 1,
-  site_name: 'Sub2API',
-  site_logo: '',
-  site_subtitle: 'Subscription to API Conversion Platform',
-  api_base_url: '',
-  contact_info: '',
-  doc_url: '',
-  home_content: '',
+  site_name: "埃苯泽のエーアイ订阅",
+  site_logo: "",
+  site_subtitle: "Subscription to API Conversion Platform",
+  api_base_url: "",
+  contact_info: "",
+  doc_url: "",
+  home_content: "",
   hide_ccs_import_button: false,
   purchase_subscription_enabled: false,
-  purchase_subscription_url: '',
-  smtp_host: '',
+  purchase_subscription_url: "",
+  smtp_host: "",
   smtp_port: 587,
-  smtp_username: '',
-  smtp_password: '',
+  smtp_username: "",
+  smtp_password: "",
   smtp_password_configured: false,
-  smtp_from_email: '',
-  smtp_from_name: '',
+  smtp_from_email: "",
+  smtp_from_name: "",
   smtp_use_tls: true,
   // Cloudflare Turnstile
   turnstile_enabled: false,
-  turnstile_site_key: '',
-  turnstile_secret_key: '',
+  turnstile_site_key: "",
+  turnstile_secret_key: "",
   turnstile_secret_key_configured: false,
   // LinuxDo Connect OAuth 登录
   linuxdo_connect_enabled: false,
-  linuxdo_connect_client_id: '',
-  linuxdo_connect_client_secret: '',
+  linuxdo_connect_client_id: "",
+  linuxdo_connect_client_secret: "",
   linuxdo_connect_client_secret_configured: false,
-  linuxdo_connect_redirect_url: '',
+  linuxdo_connect_redirect_url: "",
   // Model fallback
   enable_model_fallback: false,
-  fallback_model_anthropic: 'claude-3-5-sonnet-20241022',
-  fallback_model_openai: 'gpt-4o',
-  fallback_model_gemini: 'gemini-2.5-pro',
-  fallback_model_antigravity: 'gemini-2.5-pro',
+  fallback_model_anthropic: "claude-3-5-sonnet-20241022",
+  fallback_model_openai: "gpt-4o",
+  fallback_model_gemini: "gemini-2.5-pro",
+  fallback_model_antigravity: "gemini-2.5-pro",
   // Identity patch (Claude -> Gemini)
   enable_identity_patch: true,
-  identity_patch_prompt: '',
+  identity_patch_prompt: "",
   // Ops monitoring (vNext)
   ops_monitoring_enabled: true,
   ops_realtime_monitoring_enabled: true,
-  ops_query_mode_default: 'auto',
-  ops_metrics_interval_seconds: 60
-})
+  ops_query_mode_default: "auto",
+  ops_metrics_interval_seconds: 60,
+});
 
 // LinuxDo OAuth redirect URL suggestion
 const linuxdoRedirectUrlSuggestion = computed(() => {
-  if (typeof window === 'undefined') return ''
+  if (typeof window === "undefined") return "";
   const origin =
-    window.location.origin || `${window.location.protocol}//${window.location.host}`
-  return `${origin}/api/v1/auth/oauth/linuxdo/callback`
-})
+    window.location.origin ||
+    `${window.location.protocol}//${window.location.host}`;
+  return `${origin}/api/v1/auth/oauth/linuxdo/callback`;
+});
 
 async function setAndCopyLinuxdoRedirectUrl() {
-  const url = linuxdoRedirectUrlSuggestion.value
-  if (!url) return
+  const url = linuxdoRedirectUrlSuggestion.value;
+  if (!url) return;
 
-  form.linuxdo_connect_redirect_url = url
-  await copyToClipboard(url, t('admin.settings.linuxdo.redirectUrlSetAndCopied'))
+  form.linuxdo_connect_redirect_url = url;
+  await copyToClipboard(
+    url,
+    t("admin.settings.linuxdo.redirectUrlSetAndCopied"),
+  );
 }
 
 function handleLogoUpload(event: Event) {
-  const input = event.target as HTMLInputElement
-  const file = input.files?.[0]
-  logoError.value = ''
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+  logoError.value = "";
 
-  if (!file) return
+  if (!file) return;
 
   // Check file size (300KB = 307200 bytes)
-  const maxSize = 300 * 1024
+  const maxSize = 300 * 1024;
   if (file.size > maxSize) {
-    logoError.value = t('admin.settings.site.logoSizeError', {
-      size: (file.size / 1024).toFixed(1)
-    })
-    input.value = ''
-    return
+    logoError.value = t("admin.settings.site.logoSizeError", {
+      size: (file.size / 1024).toFixed(1),
+    });
+    input.value = "";
+    return;
   }
 
   // Check file type
-  if (!file.type.startsWith('image/')) {
-    logoError.value = t('admin.settings.site.logoTypeError')
-    input.value = ''
-    return
+  if (!file.type.startsWith("image/")) {
+    logoError.value = t("admin.settings.site.logoTypeError");
+    input.value = "";
+    return;
   }
 
   // Convert to base64
-  const reader = new FileReader()
+  const reader = new FileReader();
   reader.onload = (e) => {
-    form.site_logo = e.target?.result as string
-  }
+    form.site_logo = e.target?.result as string;
+  };
   reader.onerror = () => {
-    logoError.value = t('admin.settings.site.logoReadError')
-  }
-  reader.readAsDataURL(file)
+    logoError.value = t("admin.settings.site.logoReadError");
+  };
+  reader.readAsDataURL(file);
 
   // Reset input
-  input.value = ''
+  input.value = "";
 }
 
 async function loadSettings() {
-  loading.value = true
+  loading.value = true;
   try {
-    const settings = await adminAPI.settings.getSettings()
-    Object.assign(form, settings)
-    form.smtp_password = ''
-    form.turnstile_secret_key = ''
-    form.linuxdo_connect_client_secret = ''
+    const settings = await adminAPI.settings.getSettings();
+    Object.assign(form, settings);
+    form.smtp_password = "";
+    form.turnstile_secret_key = "";
+    form.linuxdo_connect_client_secret = "";
   } catch (error: any) {
     appStore.showError(
-      t('admin.settings.failedToLoad') + ': ' + (error.message || t('common.unknownError'))
-    )
+      t("admin.settings.failedToLoad") +
+        ": " +
+        (error.message || t("common.unknownError")),
+    );
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
 async function saveSettings() {
-  saving.value = true
+  saving.value = true;
   try {
     const payload: UpdateSettingsRequest = {
       registration_enabled: form.registration_enabled,
@@ -1269,7 +1406,8 @@ async function saveSettings() {
       turnstile_secret_key: form.turnstile_secret_key || undefined,
       linuxdo_connect_enabled: form.linuxdo_connect_enabled,
       linuxdo_connect_client_id: form.linuxdo_connect_client_id,
-      linuxdo_connect_client_secret: form.linuxdo_connect_client_secret || undefined,
+      linuxdo_connect_client_secret:
+        form.linuxdo_connect_client_secret || undefined,
       linuxdo_connect_redirect_url: form.linuxdo_connect_redirect_url,
       enable_model_fallback: form.enable_model_fallback,
       fallback_model_anthropic: form.fallback_model_anthropic,
@@ -1277,53 +1415,59 @@ async function saveSettings() {
       fallback_model_gemini: form.fallback_model_gemini,
       fallback_model_antigravity: form.fallback_model_antigravity,
       enable_identity_patch: form.enable_identity_patch,
-      identity_patch_prompt: form.identity_patch_prompt
-    }
-    const updated = await adminAPI.settings.updateSettings(payload)
-    Object.assign(form, updated)
-    form.smtp_password = ''
-    form.turnstile_secret_key = ''
-    form.linuxdo_connect_client_secret = ''
+      identity_patch_prompt: form.identity_patch_prompt,
+    };
+    const updated = await adminAPI.settings.updateSettings(payload);
+    Object.assign(form, updated);
+    form.smtp_password = "";
+    form.turnstile_secret_key = "";
+    form.linuxdo_connect_client_secret = "";
     // Refresh cached public settings so sidebar/header update immediately
-    await appStore.fetchPublicSettings(true)
-    appStore.showSuccess(t('admin.settings.settingsSaved'))
+    await appStore.fetchPublicSettings(true);
+    appStore.showSuccess(t("admin.settings.settingsSaved"));
   } catch (error: any) {
     appStore.showError(
-      t('admin.settings.failedToSave') + ': ' + (error.message || t('common.unknownError'))
-    )
+      t("admin.settings.failedToSave") +
+        ": " +
+        (error.message || t("common.unknownError")),
+    );
   } finally {
-    saving.value = false
+    saving.value = false;
   }
 }
 
 async function testSmtpConnection() {
-  testingSmtp.value = true
+  testingSmtp.value = true;
   try {
     const result = await adminAPI.settings.testSmtpConnection({
       smtp_host: form.smtp_host,
       smtp_port: form.smtp_port,
       smtp_username: form.smtp_username,
       smtp_password: form.smtp_password,
-      smtp_use_tls: form.smtp_use_tls
-    })
+      smtp_use_tls: form.smtp_use_tls,
+    });
     // API returns { message: "..." } on success, errors are thrown as exceptions
-    appStore.showSuccess(result.message || t('admin.settings.smtpConnectionSuccess'))
+    appStore.showSuccess(
+      result.message || t("admin.settings.smtpConnectionSuccess"),
+    );
   } catch (error: any) {
     appStore.showError(
-      t('admin.settings.failedToTestSmtp') + ': ' + (error.message || t('common.unknownError'))
-    )
+      t("admin.settings.failedToTestSmtp") +
+        ": " +
+        (error.message || t("common.unknownError")),
+    );
   } finally {
-    testingSmtp.value = false
+    testingSmtp.value = false;
   }
 }
 
 async function sendTestEmail() {
   if (!testEmailAddress.value) {
-    appStore.showError(t('admin.settings.testEmail.enterRecipientHint'))
-    return
+    appStore.showError(t("admin.settings.testEmail.enterRecipientHint"));
+    return;
   }
 
-  sendingTestEmail.value = true
+  sendingTestEmail.value = true;
   try {
     const result = await adminAPI.settings.sendTestEmail({
       email: testEmailAddress.value,
@@ -1333,66 +1477,69 @@ async function sendTestEmail() {
       smtp_password: form.smtp_password,
       smtp_from_email: form.smtp_from_email,
       smtp_from_name: form.smtp_from_name,
-      smtp_use_tls: form.smtp_use_tls
-    })
+      smtp_use_tls: form.smtp_use_tls,
+    });
     // API returns { message: "..." } on success, errors are thrown as exceptions
-    appStore.showSuccess(result.message || t('admin.settings.testEmailSent'))
+    appStore.showSuccess(result.message || t("admin.settings.testEmailSent"));
   } catch (error: any) {
     appStore.showError(
-      t('admin.settings.failedToSendTestEmail') + ': ' + (error.message || t('common.unknownError'))
-    )
+      t("admin.settings.failedToSendTestEmail") +
+        ": " +
+        (error.message || t("common.unknownError")),
+    );
   } finally {
-    sendingTestEmail.value = false
+    sendingTestEmail.value = false;
   }
 }
 
 // Admin API Key 方法
 async function loadAdminApiKey() {
-  adminApiKeyLoading.value = true
+  adminApiKeyLoading.value = true;
   try {
-    const status = await adminAPI.settings.getAdminApiKey()
-    adminApiKeyExists.value = status.exists
-    adminApiKeyMasked.value = status.masked_key
+    const status = await adminAPI.settings.getAdminApiKey();
+    adminApiKeyExists.value = status.exists;
+    adminApiKeyMasked.value = status.masked_key;
   } catch (error: any) {
-    console.error('Failed to load admin API key status:', error)
+    console.error("Failed to load admin API key status:", error);
   } finally {
-    adminApiKeyLoading.value = false
+    adminApiKeyLoading.value = false;
   }
 }
 
 async function createAdminApiKey() {
-  adminApiKeyOperating.value = true
+  adminApiKeyOperating.value = true;
   try {
-    const result = await adminAPI.settings.regenerateAdminApiKey()
-    newAdminApiKey.value = result.key
-    adminApiKeyExists.value = true
-    adminApiKeyMasked.value = result.key.substring(0, 10) + '...' + result.key.slice(-4)
-    appStore.showSuccess(t('admin.settings.adminApiKey.keyGenerated'))
+    const result = await adminAPI.settings.regenerateAdminApiKey();
+    newAdminApiKey.value = result.key;
+    adminApiKeyExists.value = true;
+    adminApiKeyMasked.value =
+      result.key.substring(0, 10) + "..." + result.key.slice(-4);
+    appStore.showSuccess(t("admin.settings.adminApiKey.keyGenerated"));
   } catch (error: any) {
-    appStore.showError(error.message || t('common.error'))
+    appStore.showError(error.message || t("common.error"));
   } finally {
-    adminApiKeyOperating.value = false
+    adminApiKeyOperating.value = false;
   }
 }
 
 async function regenerateAdminApiKey() {
-  if (!confirm(t('admin.settings.adminApiKey.regenerateConfirm'))) return
-  await createAdminApiKey()
+  if (!confirm(t("admin.settings.adminApiKey.regenerateConfirm"))) return;
+  await createAdminApiKey();
 }
 
 async function deleteAdminApiKey() {
-  if (!confirm(t('admin.settings.adminApiKey.deleteConfirm'))) return
-  adminApiKeyOperating.value = true
+  if (!confirm(t("admin.settings.adminApiKey.deleteConfirm"))) return;
+  adminApiKeyOperating.value = true;
   try {
-    await adminAPI.settings.deleteAdminApiKey()
-    adminApiKeyExists.value = false
-    adminApiKeyMasked.value = ''
-    newAdminApiKey.value = ''
-    appStore.showSuccess(t('admin.settings.adminApiKey.keyDeleted'))
+    await adminAPI.settings.deleteAdminApiKey();
+    adminApiKeyExists.value = false;
+    adminApiKeyMasked.value = "";
+    newAdminApiKey.value = "";
+    appStore.showSuccess(t("admin.settings.adminApiKey.keyDeleted"));
   } catch (error: any) {
-    appStore.showError(error.message || t('common.error'))
+    appStore.showError(error.message || t("common.error"));
   } finally {
-    adminApiKeyOperating.value = false
+    adminApiKeyOperating.value = false;
   }
 }
 
@@ -1400,50 +1547,52 @@ function copyNewKey() {
   navigator.clipboard
     .writeText(newAdminApiKey.value)
     .then(() => {
-      appStore.showSuccess(t('admin.settings.adminApiKey.keyCopied'))
+      appStore.showSuccess(t("admin.settings.adminApiKey.keyCopied"));
     })
     .catch(() => {
-      appStore.showError(t('common.copyFailed'))
-    })
+      appStore.showError(t("common.copyFailed"));
+    });
 }
 
 // Stream Timeout 方法
 async function loadStreamTimeoutSettings() {
-  streamTimeoutLoading.value = true
+  streamTimeoutLoading.value = true;
   try {
-    const settings = await adminAPI.settings.getStreamTimeoutSettings()
-    Object.assign(streamTimeoutForm, settings)
+    const settings = await adminAPI.settings.getStreamTimeoutSettings();
+    Object.assign(streamTimeoutForm, settings);
   } catch (error: any) {
-    console.error('Failed to load stream timeout settings:', error)
+    console.error("Failed to load stream timeout settings:", error);
   } finally {
-    streamTimeoutLoading.value = false
+    streamTimeoutLoading.value = false;
   }
 }
 
 async function saveStreamTimeoutSettings() {
-  streamTimeoutSaving.value = true
+  streamTimeoutSaving.value = true;
   try {
     const updated = await adminAPI.settings.updateStreamTimeoutSettings({
       enabled: streamTimeoutForm.enabled,
       action: streamTimeoutForm.action,
       temp_unsched_minutes: streamTimeoutForm.temp_unsched_minutes,
       threshold_count: streamTimeoutForm.threshold_count,
-      threshold_window_minutes: streamTimeoutForm.threshold_window_minutes
-    })
-    Object.assign(streamTimeoutForm, updated)
-    appStore.showSuccess(t('admin.settings.streamTimeout.saved'))
+      threshold_window_minutes: streamTimeoutForm.threshold_window_minutes,
+    });
+    Object.assign(streamTimeoutForm, updated);
+    appStore.showSuccess(t("admin.settings.streamTimeout.saved"));
   } catch (error: any) {
     appStore.showError(
-      t('admin.settings.streamTimeout.saveFailed') + ': ' + (error.message || t('common.unknownError'))
-    )
+      t("admin.settings.streamTimeout.saveFailed") +
+        ": " +
+        (error.message || t("common.unknownError")),
+    );
   } finally {
-    streamTimeoutSaving.value = false
+    streamTimeoutSaving.value = false;
   }
 }
 
 onMounted(() => {
-  loadSettings()
-  loadAdminApiKey()
-  loadStreamTimeoutSettings()
-})
+  loadSettings();
+  loadAdminApiKey();
+  loadStreamTimeoutSettings();
+});
 </script>
