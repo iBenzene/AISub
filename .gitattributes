@@ -1,0 +1,30 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files to always be LF and CRLF respectively.
+# These files should always be LF.
+*.go text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.sh text eol=lf
+*.mod text eol=lf
+*.sum text eol=lf
+
+# Explicitly declare binary files.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
