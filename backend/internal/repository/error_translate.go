@@ -8,6 +8,7 @@ import (
 
 	dbent "github.com/Wei-Shaw/sub2api/ent"
 	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/lib/pq"
 )
 
@@ -86,6 +87,10 @@ func isUniqueConstraintViolation(err error) bool {
 	var pgErr *pq.Error
 	if errors.As(err, &pgErr) {
 		return pgErr.Code == "23505"
+	}
+	var pgxErr *pgconn.PgError
+	if errors.As(err, &pgxErr) {
+		return pgxErr.Code == "23505"
 	}
 
 	// 回退到错误消息检测（兼容其他场景）。
