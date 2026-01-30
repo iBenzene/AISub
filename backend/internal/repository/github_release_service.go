@@ -98,23 +98,30 @@ func (c *githubReleaseClient) DownloadFile(ctx context.Context, url, dest string
 	if err != nil {
 		return err
 	}
-	defer func() { _ = out.Close() }()
+	success := false
+	defer func() {
+		_ = out.Close()
+		if !success {
+			_ = os.Remove(dest)
+		}
+	}()
 
-	// SECURITY: Use LimitReader to enforce max download size even if Content-Length is missing/wrong
-	limited := io.LimitReader(resp.Body, maxSize+1)
-	written, err := io.Copy(out, limited)
+	// SECURITY: Read up to maxSize+1 to detect oversized chunked downloads.
+	written, err := io.CopyN(out, resp.Body, maxSize+1)
 	if err != nil {
+		if err == io.EOF || err == io.ErrUnexpectedEOF {
+			if written <= maxSize {
+				success = true
+				return nil
+			}
+		}
 		return err
 	}
 
-	// Check if we hit the limit (downloaded more than maxSize)
-	if written > maxSize {
-		_ = os.Remove(dest) // Clean up partial file (best-effort)
-		return fmt.Errorf("download exceeded maximum size of %d bytes", maxSize)
-	}
-
-	return nil
+	// Copied maxSize+1 bytes successfully => oversized download.
+	return fmt.Errorf("download exceeded maximum size of %d bytes", maxSize)
 }
+
 
 func (c *githubReleaseClient) FetchChecksumFile(ctx context.Context, url string) ([]byte, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)

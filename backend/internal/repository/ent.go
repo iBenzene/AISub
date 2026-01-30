@@ -1,4 +1,4 @@
-// Package repository 提供应用程序的基础设施层组件。
+﻿// Package repository 提供应用程序的基础设施层组件。
 // 包括数据库连接初始化、ORM 客户端管理、Redis 连接、数据库迁移等核心功能。
 package repository
 
@@ -41,24 +41,22 @@ func InitEnt(cfg *config.Config) (*ent.Client, *sql.DB, error) {
 		return nil, nil, err
 	}
 
-	// 构建包含时区信息的数据库连接字符串 (DSN)。
-	// 时区信息会传递给 PostgreSQL，确保数据库层面的时间处理正确。
-	dsn := cfg.Database.DSNWithTimezone(cfg.Timezone)
-
-	// 使用 Ent 的 SQL 驱动打开 PostgreSQL 连接。
-	// dialect.Postgres 指定使用 PostgreSQL 方言进行 SQL 生成。
-	drv, err := entsql.Open(dialect.Postgres, dsn)
+	// PostgreSQL 数据库连接，兼容 pooler / pgbouncer 等连接池。
+	db, err := openPostgresDB(cfg)
 	if err != nil {
 		return nil, nil, err
 	}
-	applyDBPoolSettings(drv.DB(), cfg)
+	applyDBPoolSettings(db, cfg)
+
+	// 创建 Ent 数据库驱动，绑定到已配置的数据库连接。
+	drv := entsql.OpenDB(dialect.Postgres, db)
 
 	// 确保数据库 schema 已准备就绪。
 	// SQL 迁移文件是 schema 的权威来源（source of truth）。
 	// 这种方式比 Ent 的自动迁移更可控，支持复杂的迁移场景。
 	migrationCtx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
 	defer cancel()
-	if err := applyMigrationsFS(migrationCtx, drv.DB(), migrations.FS); err != nil {
+	if err := applyMigrationsFS(migrationCtx, db, migrations.FS); err != nil {
 		_ = drv.Close() // 迁移失败时关闭驱动，避免资源泄露
 		return nil, nil, err
 	}
@@ -78,5 +76,5 @@ func InitEnt(cfg *config.Config) (*ent.Client, *sql.DB, error) {
 		}
 	}
 
-	return client, drv.DB(), nil
+	return client, db, nil
 }
