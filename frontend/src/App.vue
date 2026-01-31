@@ -81,7 +81,13 @@ onMounted(async () => {
 
   // Load public settings into appStore (will be cached for other components)
   await appStore.fetchPublicSettings()
-})
+
+  // Auto-space the entire page
+  import('pangu').then((pangu) => {
+    // @ts-ignore: pangu type definition might be missing autoSpacingPage or have issues
+    pangu.default.autoSpacingPage()
+  });
+});
 </script>
 
 <template>

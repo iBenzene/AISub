@@ -715,8 +715,7 @@
                 <!-- Logo Preview -->
                 <div class="flex-shrink-0">
                   <div
-                    class="flex h-20 w-20 items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 dark:border-dark-600 dark:bg-dark-800"
-                    :class="{ 'border-solid': form.site_logo }"
+                    class="flex h-20 w-20 items-center justify-center overflow-hidden"
                   >
                     <img
                       v-if="form.site_logo"
@@ -1135,7 +1134,7 @@ const form = reactive<SettingsForm>({
   totp_encryption_key_configured: false,
   default_balance: 0,
   default_concurrency: 1,
-  site_name: 'Sub2API',
+  site_name: '埃苯泽のエーアイ订阅',
   site_logo: '',
   site_subtitle: 'Subscription to API Conversion Platform',
   api_base_url: '',

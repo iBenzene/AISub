@@ -30,9 +30,9 @@
       <div class="mb-8 text-center">
         <!-- Custom Logo or Default Logo -->
         <div
-          class="mb-4 inline-flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl shadow-lg shadow-primary-500/30"
+          class="mb-4 inline-flex h-16 w-16 items-center justify-center overflow-hidden "
         >
-          <img :src="siteLogo || '/logo.png'" alt="Logo" class="h-full w-full object-contain" />
+          <img :src="siteLogo || 'https://cdn.ibenzene.cn/default/iBzAISub_logo.svg'" alt="Logo" class="h-full w-full object-contain" />
         </div>
         <h1 class="text-gradient mb-2 text-3xl font-bold">
           {{ siteName }}
@@ -65,7 +65,7 @@ import { ref, computed, onMounted } from 'vue'
 import { getPublicSettings } from '@/api/auth'
 import { sanitizeUrl } from '@/utils/url'
 
-const siteName = ref('Sub2API')
+const siteName = ref('埃苯泽のエーアイ订阅')
 const siteLogo = ref('')
 const siteSubtitle = ref('Subscription to API Conversion Platform')
 
@@ -74,7 +74,7 @@ const currentYear = computed(() => new Date().getFullYear())
 onMounted(async () => {
   try {
     const settings = await getPublicSettings()
-    siteName.value = settings.site_name || 'Sub2API'
+    siteName.value = settings.site_name || '埃苯泽のエーアイ订阅'
     siteLogo.value = sanitizeUrl(settings.site_logo || '', { allowRelative: true })
     siteSubtitle.value = settings.site_subtitle || 'Subscription to API Conversion Platform'
   } catch (error) {

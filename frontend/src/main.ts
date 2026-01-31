@@ -16,12 +16,16 @@ const appStore = useAppStore()
 appStore.initFromInjectedConfig()
 
 // Set document title immediately after config is loaded
-if (appStore.siteName && appStore.siteName !== 'Sub2API') {
+if (appStore.siteName && appStore.siteName !== '埃苯泽のエーアイ订阅') {
   document.title = `${appStore.siteName} - AI API Gateway`
 }
 
 app.use(router)
 app.use(i18n)
+
+import vPangu from '@/directives/vPangu'
+app.directive('pangu', vPangu)
+
 
 // 等待路由器完成初始导航后再挂载，避免竞态条件导致的空白渲染
 router.isReady().then(() => {

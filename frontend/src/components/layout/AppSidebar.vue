@@ -9,12 +9,12 @@
     <!-- Logo/Brand -->
     <div class="sidebar-header">
       <!-- Custom Logo or Default Logo -->
-      <div class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl shadow-glow">
-        <img :src="siteLogo || '/logo.png'" alt="Logo" class="h-full w-full object-contain" />
+      <div class="flex h-9 w-9 items-center justify-center overflow-hidden ">
+        <img :src="siteLogo || 'https://cdn.ibenzene.cn/default/iBzAISub_logo.svg'" alt="Logo" class="h-full w-full object-contain" />
       </div>
       <transition name="fade">
         <div v-if="!sidebarCollapsed" class="flex flex-col">
-          <span class="text-lg font-bold text-gray-900 dark:text-white">
+          <span class="text-sm font-bold text-gray-900 dark:text-white">
             {{ siteName }}
           </span>
           <!-- Version Badge -->
